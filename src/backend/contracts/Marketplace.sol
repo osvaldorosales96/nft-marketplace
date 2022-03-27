@@ -11,7 +11,7 @@ contract Marketplace is ReentrancyGuard {
   uint public immutable feePercent; // the fee percentage on sales
   uint public itemCount;
 
-  struct item{
+  struct Item{
     uint itemId;
     IERC721 nft;
     uint tokenId;
@@ -41,7 +41,7 @@ contract Marketplace is ReentrancyGuard {
     // Increment itemCount
     itemCount ++;
     // Transfer nft
-    _nft.transgerFrom(msg.sender, address(this), _tokenId);
+    _nft.transferFrom(msg.sender, address(this), _tokenId);
     // Add new item to items mapping
     items[itemCount] = Item(
       itemCount,
