@@ -50,9 +50,13 @@ export default function MyListedItems({ marketplace, nft, account }) {
           description: metadata.description,
           image: metadata.image
         }
-        listedItems.push(item)
+        //listedItems.push(item)
         // add listed item to sold items array if sold
-        if (i.sold) soldItems.push(item)
+        if (i.sold) {
+          soldItems.push(item)
+        } else {
+          listedItems.push(item)
+        }
       }
     }
     setLoading(false)
@@ -72,7 +76,7 @@ export default function MyListedItems({ marketplace, nft, account }) {
   
   return (
     <div className='flex justify-center'>
-      {listedItems.length > 0 ?
+      {listedItems.length > 0 || soldItems.length > 0?
         <div className='px-5 py-3 container'>
           <h2>Listed</h2>
             <Row xs={1} md={2} lg={4} className="g-4 py-3">
